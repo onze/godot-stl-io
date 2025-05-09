@@ -1,0 +1,24 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="stl-io"
+run/main_scene="uid://7m4vcj5xg7lb"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://dv57fu1ut3tcs"
+
+[autoload]
+
+DebugCam="*res://addons/debug_camera/scripts/DebugCamAutoload.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_camera/plugin.cfg", "res://addons/script-dock/plugin.cfg", "res://addons/stl-io/plugin.cfg")

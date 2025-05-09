@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://7m4vcj5xg7lb"]
+
+[ext_resource type="Script" uid="uid://bho4lfio5qadu" path="res://samples/sample_viewer.gd" id="1_shfe8"]
+[ext_resource type="ArrayMesh" path="res://samples/Clamshell Parts Box Standard.stl" id="2_l1b7w"]
+[ext_resource type="Script" uid="uid://b4twoi2jbxcsc" path="res://addons/debug_camera/scripts/DebugCamera3D.gd" id="2_o612q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_shfe8"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_4wwt8"]
+sky_material = SubResource("ProceduralSkyMaterial_shfe8")
+
+[sub_resource type="Environment" id="Environment_o612q"]
+background_mode = 2
+sky = SubResource("Sky_4wwt8")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_shfe8")
+
+[node name="root" type="Node3D" parent="."]
+
+[node name="mesh_instance" type="MeshInstance3D" parent="root"]
+unique_name_in_owner = true
+mesh = ExtResource("2_l1b7w")
+
+[node name="Camera3D" type="Camera3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 0.904835, 0.425763, 0, -0.425763, 0.904835, -0.0160823, 5.41749, 9.78825)
+script = ExtResource("2_o612q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="root"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="root"]
+environment = SubResource("Environment_o612q")
