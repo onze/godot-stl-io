@@ -9,7 +9,8 @@ A [Godot](https://godotengine.org/)/GDScript addon to import/export STL CAD file
 [!["Buy Me A Coffee"](https://buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/valbisson)
 
 # Setup
-Copy the `addons/stl-io` directory into your addons, activate it in the plugins settings.
+1. copy the `addons/stl-io` directory into your addons
+2. activate it in the plugins settings.
 
 # Overview
 This addon is pretty simple with 3 classes:
@@ -24,7 +25,7 @@ STL files should be usable as `ArrayMesh` resources as soon as the addon is acti
 ## Import
 The importer returns either a `Variant` that is either an `ERROR` or an `ArrayMesh`.
 ```gdscript
-var mesh :ArrayMesh = STLIO.Importer.LoadFromPath('/path/to/file')
+var mesh :ArrayMesh = STLIO.Importer.LoadFromPath('/path/to/file.stl')
 ```
 `STLIO.Importer.LoadFromBytes` is also available for custom use cases.
 
@@ -32,7 +33,7 @@ var mesh :ArrayMesh = STLIO.Importer.LoadFromPath('/path/to/file')
 The exporter exports all surfaces of an `ArrayMesh` to its destination.
 ```gdscript
 var mesh :ArrayMesh = ...
-STLIO.Exporter.SaveToPath(mesh, '/path/to/file')
+STLIO.Exporter.SaveToPath(mesh, '/path/to/file.stl')
 ```
 `STLIO.Exporter.SaveToBytes` is also available for custom use cases.
 
