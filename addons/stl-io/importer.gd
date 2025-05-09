@@ -1,47 +1,4 @@
-@tool
-extends ResourceFormatLoader
-# https://docs.godotengine.org/en/stable/classes/class_resourceformatloader.html#class-resourceformatloader-private-method-get-resource-type
-class_name STLIOImporter
-
-static func RegisterFormatLoader(at_front := false) -> void:
-	var recognized_extensions_for_type := ResourceLoader.get_recognized_extensions_for_type('ArrayMesh')
-	if 'stl' in recognized_extensions_for_type or 'stla' in recognized_extensions_for_type:
-		return
-	ResourceLoader.add_resource_format_loader(STLIOImporter.new(), at_front)
-
-func _exists(path: String) -> bool:
-	'''
-	Returns whether a recognized resource exists for the given path.
-	'''
-	return FileAccess.file_exists(path)
-
-#func _get_classes_used(_path: String) -> PackedStringArray:
-	#return PackedStringArray([])
-
-#func _get_dependencies(_path: String, _add_types: bool) -> PackedStringArray:
-	#return PackedStringArray()
-
-func _handles_type(type: StringName) -> bool:
-	return type in [&'ArrayMesh', &'Resource']
-
-func _get_recognized_extensions() -> PackedStringArray:
-	return PackedStringArray(['stl', 'stla'])
-
-func _get_resource_script_class(_path: String) -> String:
-	return 'ArrayMesh'
-
-func _get_resource_type(path: String) -> String:
-	if path.get_extension() in _get_recognized_extensions():
-		return 'ArrayMesh'
-	return ''
-
-func _load(
-	path: String,
-	_original_path: String,
-	_use_sub_threads: bool,
-	_cache_mode: int
-	) -> Variant:
-	return LoadFromPath(path)
+extends RefCounted
 
 static func LoadFromPath(path: String) -> Variant:
 	'''
@@ -52,9 +9,22 @@ static func LoadFromPath(path: String) -> Variant:
 	if bytes.is_empty():
 		return FileAccess.get_open_error()
 
+	var load_result: Variant = LoadFromBytes(bytes)
+	if typeof(load_result) == TYPE_INT:
+		return load_result as Error
+
+	var mesh: ArrayMesh = load_result
+	if mesh == null:
+		# if it wasn't an error it should be an ArrayMesh
+		return ERR_BUG
+
+	mesh.surface_set_name(0, path.get_file())
+	return mesh
+
+static func LoadFromBytes(bytes :PackedByteArray) -> Variant:
 	var text_header := bytes.slice(0, 80).get_string_from_ascii().strip_edges()
 	var load_result: Variant
-	if path.get_extension() == 'stla' or text_header.begins_with('solid '):
+	if text_header.begins_with('solid '):
 		load_result = LoadAsciiFromBuffer(bytes)
 	else:
 		load_result = LoadBinaryFromBuffer(bytes)
@@ -68,7 +38,6 @@ static func LoadFromPath(path: String) -> Variant:
 		return ERR_BUG
 
 	# polish
-	mesh.surface_set_name(0, path.get_file())
 	var mat := StandardMaterial3D.new()
 	mat.albedo_color = Color.WHITE
 	mat.vertex_color_use_as_albedo = true

@@ -1,7 +1,7 @@
 extends Control
 
 # registers the STL loader
-const RegisterLoader = preload('res://addons/stl-io/register_loader.gd')
+#const RegisterLoader = preload('res://addons/stl-io/register_loader.gd')
 
 @onready var mesh_instance: MeshInstance3D = %mesh_instance
 

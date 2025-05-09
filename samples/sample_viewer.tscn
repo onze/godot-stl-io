@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://7m4vcj5xg7lb"]
 
 [ext_resource type="Script" uid="uid://bho4lfio5qadu" path="res://samples/sample_viewer.gd" id="1_shfe8"]
-[ext_resource type="ArrayMesh" path="res://samples/Clamshell Parts Box Standard.stl" id="2_l1b7w"]
+[ext_resource type="ArrayMesh" uid="uid://gxtg361xvxr5" path="res://samples/cube-corner.stl" id="2_l1b7w"]
 [ext_resource type="Script" uid="uid://b4twoi2jbxcsc" path="res://addons/debug_camera/scripts/DebugCamera3D.gd" id="2_o612q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_shfe8"]
