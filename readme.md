@@ -44,6 +44,8 @@ For more, check out the sample viewer.
 Q: Nice icon!<br>
 A: Thanks, it comes from [flaticon.com](https://www.flaticon.com/free-icon/stl_9417765)
 
+Q: Support for colors or unofficial data in the header or the facet attr field?<br>
+A: Not in this first version no. Also I lack sample data to test this, please file an issue and I'll be happy to work on it 😃
 
 Q: Any STL resources to share?<br>
 A: [STLA Files](https://people.sc.fsu.edu/~jburkardt/data/stla/stla.html), or just [wikipedia](https://en.wikipedia.org/wiki/STL_(file_format)).
