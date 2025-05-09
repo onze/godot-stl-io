@@ -37,3 +37,6 @@ func _load(
 	_cache_mode: int
 	) -> Variant:
 	return Importer.LoadFromPath(path)
+
+static func IsError(result :Variant) -> bool:
+	return typeof(result) == TYPE_INT

@@ -10,7 +10,7 @@ static func LoadFromPath(path: String) -> Variant:
 		return FileAccess.get_open_error()
 
 	var load_result: Variant = LoadFromBytes(bytes)
-	if typeof(load_result) == TYPE_INT:
+	if STLIO.IsError(load_result):
 		return load_result as Error
 
 	var mesh: ArrayMesh = load_result
@@ -29,7 +29,7 @@ static func LoadFromBytes(bytes :PackedByteArray) -> Variant:
 	else:
 		load_result = LoadBinaryFromBuffer(bytes)
 
-	if typeof(load_result) == TYPE_INT:
+	if STLIO.IsError(load_result):
 		return load_result as Error
 
 	var mesh: ArrayMesh = load_result
