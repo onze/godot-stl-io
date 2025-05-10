@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="stl.png" alt="logo"/>
 </p>
@@ -53,11 +52,12 @@ A: [STLA Files](https://people.sc.fsu.edu/~jburkardt/data/stla/stla.html), or ju
 
 ## Changelog
 ### 1.0.0
-
+- importer & exporter ready
 
 <details>
 <summary>Previous entries</summary>
 
 ### 0.1
 - first working version
+
 </details>
