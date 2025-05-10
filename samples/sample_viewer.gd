@@ -3,6 +3,7 @@ extends Control
 @onready var open_model_btn: Button = %'open-model-btn'
 @onready var mesh_instance_import: MeshInstance3D = %mesh_instance_import
 @onready var mesh_instance_export: MeshInstance3D = %mesh_instance_export
+@onready var model_path_label: Label = %'model-path-label'
 
 var file_dialog :FileDialog
 
@@ -40,8 +41,9 @@ func _on_open_pressed() -> void:
 	file_dialog.popup_centered()
 
 func _on_file_selected(path :String) -> void:
-	print('opening %s'%path)
+	model_path_label.text = path
 	var result = STLIO.Importer.LoadFromPath(path)
 	if STLIO.IsError(result):
-		return printerr(error_string(result))
+		model_path_label.text = 'Could not load model: '%error_string(result)
+		return
 	mesh_instance_import.mesh = result as ArrayMesh
