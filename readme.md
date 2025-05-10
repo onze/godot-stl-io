@@ -3,7 +3,7 @@
 </p>
 
 # STL-IO
-A [Godot](https://godotengine.org/)/GDScript addon to import/export STL CAD files.
+A [Godot](https://godotengine.org/)/GDScript addon to import/export in the STL file format.
 
 [!["Buy Me A Coffee"](https://buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/valbisson)
 
