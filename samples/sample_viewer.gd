@@ -1,7 +1,9 @@
 extends Control
 
 @onready var open_model_btn: Button = %'open-model-btn'
-@onready var mesh_instance: MeshInstance3D = %mesh_instance
+@onready var mesh_instance_import: MeshInstance3D = %mesh_instance_import
+@onready var mesh_instance_export: MeshInstance3D = %mesh_instance_export
+
 var file_dialog :FileDialog
 
 func _init() -> void:
@@ -9,7 +11,16 @@ func _init() -> void:
 
 func _ready() -> void:
 	open_model_btn.pressed.connect(_on_open_pressed)
-	mesh_instance.mesh = STLIO.Importer.LoadFromPath('res://samples/bottle.stl')
+	mesh_instance_import.mesh = STLIO.Importer.LoadFromPath('res://samples/bottle.stl')
+
+	# export -- disabled when running the the sampler
+	if false:
+		var export_path := OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join('output.stl')
+		var err := STLIO.Exporter.SaveToPath(mesh_instance_export.mesh, export_path)
+		if err == OK:
+			print('exported as %s'%export_path)
+		else:
+			printerr('Could not export model: %s'%error_string(err))
 
 func _on_open_pressed() -> void:
 	file_dialog = FileDialog.new()
@@ -33,4 +44,4 @@ func _on_file_selected(path :String) -> void:
 	var result = STLIO.Importer.LoadFromPath(path)
 	if STLIO.IsError(result):
 		return printerr(error_string(result))
-	mesh_instance.mesh = result as ArrayMesh
+	mesh_instance_import.mesh = result as ArrayMesh
