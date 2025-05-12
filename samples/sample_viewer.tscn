@@ -17,7 +17,7 @@ sky = SubResource("Sky_4wwt8")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="TorusMesh" id="TorusMesh_o612q"]
+[sub_resource type="BoxMesh" id="BoxMesh_o612q"]
 
 [node name="ui" type="Control"]
 layout_mode = 3
@@ -48,7 +48,7 @@ environment = SubResource("Environment_o612q")
 
 [node name="mesh_instance_export" type="MeshInstance3D" parent="root"]
 unique_name_in_owner = true
-mesh = SubResource("TorusMesh_o612q")
+mesh = SubResource("BoxMesh_o612q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

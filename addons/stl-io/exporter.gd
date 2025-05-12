@@ -22,10 +22,11 @@ static func SaveToBytes(mesh :Mesh, header := PackedByteArray()) -> Variant:
 	if bytes.size() < 80:
 		bytes.resize(80)
 
-	# += triangle count + tri count * tri size
-	bytes.resize(bytes.size()+4+faces.size()*FACET_SIZE)
+	# add tri count
 	bytes.append_array(PackedByteArray([0, 0, 0, 0]))
-	bytes.encode_u32(80, faces.size())
+	bytes.encode_u32(80, int(faces.size()/3))
+	# += triangle count * tri size
+	bytes.resize(bytes.size()+int(faces.size()/3)*FACET_SIZE)
 
 	var normal :Vector3
 	var v0 :Vector3

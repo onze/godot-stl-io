@@ -51,12 +51,14 @@ A: [STLA Files](https://people.sc.fsu.edu/~jburkardt/data/stla/stla.html), or ju
 
 
 ## Changelog
-### 1.0.0
-- importer & exporter ready
+### 1.0.1
+- fixed tri count in exported file - now loads in selfcad and orca slicer
 
 <details>
 <summary>Previous entries</summary>
 
+### 1.0.0
+- importer & exporter ready
 ### 0.1
 - first working version
 
