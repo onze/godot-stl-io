@@ -2,6 +2,7 @@
 * text=auto eol=lf
 
 # Only include the addons/stl-io folder when downloading from the Asset Library.
-/**        export-ignore
-/addons    !export-ignore
-/addons/stl-io/** !export-ignore
+**        export-ignore
+addons !export-ignore
+addons/stl-io !export-ignore
+addons/stl-io/** !export-ignore

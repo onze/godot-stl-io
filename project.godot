@@ -12,7 +12,7 @@ config_version=5
 
 config/name="stl-io"
 config/description="A Godot/GDScript addon to import/export STL CAD files."
-config/version="1.0.1"
+config/version="1.0.2"
 run/main_scene="uid://7m4vcj5xg7lb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://dv57fu1ut3tcs"
