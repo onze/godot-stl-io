@@ -12,7 +12,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	open_model_btn.pressed.connect(_on_open_pressed)
-	mesh_instance_import.mesh = STLIO.Importer.LoadFromPath('res://samples/left_rubber_hand.STL')
+	mesh_instance_import.mesh = STLIO.Importer.LoadFromPath('res://samples/bottle.stl')
 
 	# export -- disabled when running in the sample viewer
 	if false:
