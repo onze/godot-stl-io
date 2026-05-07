@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://7m4vcj5xg7lb"]
+[gd_scene format=3 uid="uid://7m4vcj5xg7lb"]
 
 [ext_resource type="Script" uid="uid://bho4lfio5qadu" path="res://samples/sample_viewer.gd" id="1_shfe8"]
-[ext_resource type="ArrayMesh" uid="uid://gxtg361xvxr5" path="res://samples/cube-corner.stl" id="2_l1b7w"]
+[ext_resource type="ArrayMesh" path="res://samples/cube-corner.stl" id="2_l1b7w"]
 [ext_resource type="Script" uid="uid://b4twoi2jbxcsc" path="res://addons/debug_camera/scripts/DebugCamera3D.gd" id="2_o612q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_shfe8"]
@@ -19,7 +19,7 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_o612q"]
 
-[node name="ui" type="Control"]
+[node name="ui" type="Control" unique_id=1304277636]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,28 +29,28 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_shfe8")
 
-[node name="root" type="Node3D" parent="."]
+[node name="root" type="Node3D" parent="." unique_id=578817148]
 
-[node name="mesh_instance_import" type="MeshInstance3D" parent="root"]
+[node name="mesh_instance_import" type="MeshInstance3D" parent="root" unique_id=753306762]
 unique_name_in_owner = true
 mesh = ExtResource("2_l1b7w")
 
-[node name="Camera3D" type="Camera3D" parent="root"]
+[node name="Camera3D" type="Camera3D" parent="root" unique_id=1325417845]
 transform = Transform3D(1, 0, 0, 0, 0.904835, 0.425763, 0, -0.425763, 0.904835, -0.0160823, 5.41749, 9.78825)
 script = ExtResource("2_o612q")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="root"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="root" unique_id=1689872451]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="root"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="root" unique_id=204466965]
 environment = SubResource("Environment_o612q")
 
-[node name="mesh_instance_export" type="MeshInstance3D" parent="root"]
+[node name="mesh_instance_export" type="MeshInstance3D" parent="root" unique_id=1046280835]
 unique_name_in_owner = true
 mesh = SubResource("BoxMesh_o612q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=605754645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,20 +58,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=806000022]
 layout_mode = 2
 
-[node name="open-model-btn" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="open-model-btn" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=157677702]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 text = "Open"
 
-[node name="model-path-label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="model-path-label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1983128572]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="spacer" type="Control" parent="VBoxContainer"]
+[node name="spacer" type="Control" parent="VBoxContainer" unique_id=395767522]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
