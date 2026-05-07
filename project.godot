@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="stl-io"
 config/description="A Godot/GDScript addon to import/export STL CAD files."
-config/version="1.0.2"
+config/version="1.0.3"
 run/main_scene="uid://7m4vcj5xg7lb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dv57fu1ut3tcs"

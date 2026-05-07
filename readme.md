@@ -51,11 +51,14 @@ A: [STLA Files](https://people.sc.fsu.edu/~jburkardt/data/stla/stla.html), or ju
 
 
 ## Changelog
-### 1.0.2
-- fixed imported files in godon asset
+### 1.0.3
+- fixed import of binary files with a misleading header
+- upgraded the project to godot 4.6
 
 <details>
 <summary>Previous entries</summary>
+### 1.0.2
+- fixed imported files in godon asset
 
 ### 1.0.1
 - fixed tri count in exported file - now loads in selfcad and orca slicer

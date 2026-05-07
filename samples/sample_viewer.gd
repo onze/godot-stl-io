@@ -12,9 +12,9 @@ func _init() -> void:
 
 func _ready() -> void:
 	open_model_btn.pressed.connect(_on_open_pressed)
-	mesh_instance_import.mesh = STLIO.Importer.LoadFromPath('res://samples/bottle.stl')
+	mesh_instance_import.mesh = STLIO.Importer.LoadFromPath('res://samples/left_rubber_hand.STL')
 
-	# export -- disabled when running the the sampler
+	# export -- disabled when running in the sample viewer
 	if false:
 		var export_path := OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS).path_join('output.stl')
 		var err := STLIO.Exporter.SaveToPath(mesh_instance_export.mesh, export_path)
@@ -22,6 +22,8 @@ func _ready() -> void:
 			print('exported as %s'%export_path)
 		else:
 			printerr('Could not export model: %s'%error_string(err))
+	else:
+		mesh_instance_export.hide()
 
 func _on_open_pressed() -> void:
 	file_dialog = FileDialog.new()

@@ -21,10 +21,23 @@ static func LoadFromPath(path: String) -> Variant:
 	mesh.surface_set_name(0, path.get_file())
 	return mesh
 
-static func LoadFromBytes(bytes :PackedByteArray) -> Variant:
+static func IsAsciiFile(bytes :PackedByteArray) -> bool:
+	# ASCII files will start with 'solid '
+	# Binary files shouldn't-but-may also start with 'solid '
 	var text_header := bytes.slice(0, 80).get_string_from_ascii().strip_edges()
+	if not text_header.begins_with('solid '):
+		return false
+	# start parsing as binary and if
+	# expected_size = 84 + triangle_count * 50
+	# then it is a binary
+	var offset:=80
+	var triangle_count := bytes.decode_u32(offset)
+	offset+=4
+	return offset+triangle_count*BYTES_PER_TRIANGLE != bytes.size()
+	
+static func LoadFromBytes(bytes :PackedByteArray) -> Variant:
 	var load_result: Variant
-	if text_header.begins_with('solid '):
+	if IsAsciiFile(bytes):
 		load_result = LoadAsciiFromBuffer(bytes)
 	else:
 		load_result = LoadBinaryFromBuffer(bytes)
@@ -56,7 +69,6 @@ enum ASCII_PARSING_MODE {
 	END_FACET = 5,
 	END_SOLID = 6,
 }
-#static func _GetNextLineOffset(bytes :PackedByteArray, offset :int) -> int:
 
 static func LoadAsciiFromBuffer(bytes :PackedByteArray) -> Variant:
 	var mesh := ArrayMesh.new()
